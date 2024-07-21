@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:loan-application}
+    name: ${SPRING_APPLICATION_NAME:customers}
   sql:
     init:
       mode: always
@@ -13,7 +13,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_schema: ${DEFAULT_SCHEMA_APPLICATIONS:applications}
+        default_schema: ${DEFAULT_SCHEMA_CUSTOMERS:customers}
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
   datasource:

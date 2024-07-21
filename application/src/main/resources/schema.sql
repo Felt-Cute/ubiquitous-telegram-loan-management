@@ -1,1 +1,1 @@
-CREATE SCHEMA IF NOT EXISTS loan_application;
+CREATE SCHEMA IF NOT EXISTS applications;
