@@ -18,15 +18,15 @@ public class LoanProduct {
     @Column(nullable = false, name = "interest_rate")
     private Double interestRate;
 
-    @Column(nullable = false, name = "minAmount")
+    @Column(nullable = false, name = "min_amount")
     private Double minAmount;
 
-    @Column(nullable = false, name = "maxAmount")
+    @Column(nullable = false, name = "max_amount")
     private Double maxAmount;
 
-    @Column(nullable = false, name = "minTerm")
+    @Column(nullable = false, name = "min_term")
     private Integer minTerm;
 
-    @Column(nullable = false, name = "maxTerm")
+    @Column(nullable = false, name = "max_term")
     private Integer maxTerm;
 }
