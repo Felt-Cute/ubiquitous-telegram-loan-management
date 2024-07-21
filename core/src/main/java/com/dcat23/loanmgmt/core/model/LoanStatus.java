@@ -1,4 +1,4 @@
-package com.dcat23.loanmgmt.application.model;
+package com.dcat23.loanmgmt.core.model;
 
 public enum LoanStatus {
     PENDING,
