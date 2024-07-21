@@ -27,5 +27,4 @@ public class Disbursement {
     @Column(nullable = false, name = "status")
     private DisbursementStatus status;
 
-
 }
