@@ -48,6 +48,7 @@
         <module>customers</module>
         <module>processing</module>
         <module>payments</module>
+        <module>notifications</module>
         <module>core</module>
     </modules>
 
