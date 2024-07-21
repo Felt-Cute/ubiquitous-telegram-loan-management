@@ -45,6 +45,8 @@
 
     <modules>
         <module>application</module>
+        <module>customers</module>
+        <module>processing</module>
         <module>core</module>
     </modules>
 
