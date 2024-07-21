@@ -30,4 +30,4 @@ springdoc:
 logging:
   level:
     root: warn
-    com.dcat23.cb: debug
+    com.dcat23.loanmgmt: debug
