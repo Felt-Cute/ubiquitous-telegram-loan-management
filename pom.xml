@@ -50,6 +50,7 @@
         <module>customers</module>
         <module>disbursements</module>
         <module>notifications</module>
+        <module>officers</module>
         <module>payments</module>
         <module>processing</module>
     </modules>
