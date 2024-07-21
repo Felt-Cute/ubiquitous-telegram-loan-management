@@ -45,11 +45,13 @@
 
     <modules>
         <module>application</module>
-        <module>customers</module>
-        <module>processing</module>
-        <module>payments</module>
-        <module>notifications</module>
         <module>core</module>
+        <module>credit-assessment</module>
+        <module>customers</module>
+        <module>disbursements</module>
+        <module>notifications</module>
+        <module>payments</module>
+        <module>processing</module>
     </modules>
 
     <dependencyManagement>
