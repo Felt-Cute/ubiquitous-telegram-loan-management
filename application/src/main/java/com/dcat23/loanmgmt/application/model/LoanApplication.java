@@ -30,7 +30,7 @@ public class LoanApplication {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "status")
     private LoanStatus status;
 

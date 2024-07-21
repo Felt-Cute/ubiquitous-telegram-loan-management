@@ -30,7 +30,7 @@ public class PaymentSchedule {
     @Column(nullable = false, name = "interest_amount")
     private Double interestAmount;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "status")
     private PaymentStatus status;
 }

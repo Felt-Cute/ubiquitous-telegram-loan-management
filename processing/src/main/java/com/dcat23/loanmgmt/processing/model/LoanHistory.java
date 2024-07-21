@@ -18,8 +18,9 @@ public class LoanHistory {
     @Column(nullable = false, name = "loan_id")
     private Long loanId; // Reference to the loan in LoanProcessingService
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "action_type")
-    private String actionType;
+    private LoanActionType actionType;
 
     @Column(nullable = false, name = "action_date")
     private LocalDate actionDate;
