@@ -14,7 +14,7 @@ public class LoanApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "amount")
     private Double amount;
 
     @Column(nullable = false, name = "interest_rate")
@@ -32,6 +32,7 @@ public class LoanApplication {
     @Enumerated
     @Column(nullable = false, name = "status")
     private LoanStatus status;
+
     @Column(nullable = false, name = "customer_id")
     private Long customerId;
 

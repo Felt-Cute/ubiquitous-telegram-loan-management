@@ -1,9 +1,9 @@
 server:
-  port: ${SERVER_PORT:8181}
+  port: ${SERVER_PORT:8183}
 
 spring:
   application:
-    name: ${SPRING_APPLICATION_NAME:loan-application}
+    name: ${SPRING_APPLICATION_NAME:processing}
   sql:
     init:
       mode: always
@@ -13,7 +13,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_schema: ${DEFAULT_SCHEMA:applications}
+        default_schema: ${DEFAULT_SCHEMA:processing}
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
   datasource:
