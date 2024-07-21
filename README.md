@@ -25,16 +25,16 @@ Project is created with:
 
 ## Modules
 
-- [User Service](#)
-- [Loan Application Service](#)
-- [Loan Processing Service](#)
-- [Credit Assessment Service](#)
-- [Payment Service](#)
-- [Notification Service](#)
-- [Document Management Service](#)
-- [API Gateway](#)
-- [Discovery Service](#)
-- [Config Server](#)
+- [Customers Service](./customers/README.md)
+- [Loan Application Service](./application/README.md)
+- [Loan Processing Service](./processing/README.md)
+- [Credit Assessment Service](./credit-assessment/README.md)
+- [Payment Service](./payments/README.md)
+- [Notification Service](./notifications/README.md)
+- [Document Management Service](./documents/README.md)
+- [API Gateway](./apigw/README.md)
+- [Discovery Service](./discovery/README.md)
+- [Config Server](./config/README.md)
 
 ---
 
@@ -176,11 +176,11 @@ http://localhost:8080/swagger-ui.html
    - [] Gather detailed requirements from stakeholders
    - [] Identify types of loans, user roles, reporting needs, and compliance requirements
 2. **Choose Technology Stack**
-   - [x] Select Spring Boot for backend framework
-   - [] Choose a database (e.g., PostgreSQL, MySQL)
+   - [1] Select Spring Boot for backend framework
+   - [2] Choose a database (e.g., PostgreSQL, MySQL)
    - [] Select a frontend framework (e.g., React, Angular)
 3. **Design Database Schema**
-   - [] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
+   - [3] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
    - [] Ensure proper normalization and relationships between tables
 4. **Implement User Authentication and Authorization**
    - [] Set up Spring Security for authentication

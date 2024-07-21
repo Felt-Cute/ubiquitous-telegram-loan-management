@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "transactions")
+@Table(name = "notifications")
 public class Notification {
 
     @Id
@@ -23,7 +23,7 @@ public class Notification {
     @Column(nullable = false, name = "is_read")
     private Boolean isRead;
 
-    @Column(nullable = false, name = "notification_date")
+    @Column(nullable = false, name = "sent_date")
     private LocalDate notificationDate;
 
 
