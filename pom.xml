@@ -47,6 +47,7 @@
         <module>application</module>
         <module>customers</module>
         <module>processing</module>
+        <module>payments</module>
         <module>core</module>
     </modules>
 
