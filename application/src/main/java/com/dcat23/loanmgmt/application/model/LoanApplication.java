@@ -34,6 +34,13 @@ public class LoanApplication {
     @Column(nullable = false, name = "status")
     private LoanStatus status;
 
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                        CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "loan_product_id")
+    private LoanProduct loanProduct;
+
     @Column(nullable = false, name = "customer_id")
     private Long customerId;
 

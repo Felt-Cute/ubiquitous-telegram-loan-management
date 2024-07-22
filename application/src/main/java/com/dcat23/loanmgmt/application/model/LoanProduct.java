@@ -3,6 +3,9 @@ package com.dcat23.loanmgmt.application.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "loan_products")
@@ -29,4 +32,21 @@ public class LoanProduct {
 
     @Column(nullable = false, name = "max_term")
     private Integer maxTerm;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "loanProduct",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.REFRESH, CascadeType.DETACH}
+    )
+    @Column(name = "applications")
+    private List<LoanApplication> applications = new ArrayList<>();
+
+    public void addApplication(LoanApplication application) {
+        if (applications == null) {
+            applications = new ArrayList<>();
+        }
+        applications.add(application);
+        application.setLoanProduct(this);
+    }
 }

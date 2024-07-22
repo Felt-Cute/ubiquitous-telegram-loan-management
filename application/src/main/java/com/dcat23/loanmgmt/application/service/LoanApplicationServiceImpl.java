@@ -12,6 +12,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
 
     @Override
     public LoanApplication createLoanApplication(LoanApplicationCreationDTO loanApplicationDTO) {
+
         return null;
     }
 
