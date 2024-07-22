@@ -28,6 +28,7 @@ Project is created with:
 - [Customers Service](customers/README.md)
 - [Loan Application Service](application/README.md)
 - [Loan Processing Service](processing/README.md)
+- [Loan Disbursement Service](disbursements/README.md)
 - [Credit Assessment Service](credit-assessment/README.md)
 - [Payment Service](payments/README.md)
 - [Notification Service](notifications/README.md)
@@ -97,11 +98,11 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/notifications/customer/{customerId}`
 - `PUT /api/notifications/{id}/read`
 - `DELETE /api/notifications/{id} (admin)`
-### [Loan Disbursement Service](http://localhost:8080/disbursements)
+### [Loan Disbursement Service](http://localhost:8188/swagger-ui.html)
 - `POST /api/disbursements/{loanId}/disburse`
 - `GET /api/disbursements/{id}`
 - `GET /api/disbursements/loan/{loanId}`
-- `PUT /api/disbursements/{id}/status (admin)`
+- `PUT /api/disbursements/{id}?status={status} (admin)`
 ### [Loan Servicing Service](http://localhost:8080/repayments)
 - `POST /api/repayments`
 - `GET /api/repayments/{id}`
