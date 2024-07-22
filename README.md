@@ -85,10 +85,11 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/loans/customer/{customerId}`
 - `PUT /api/loans/{id}?status={status} (admin)`
 - `GET /api/loans?status={status}`
-### [Document Management Service](http://localhost:8080/documents)
+### [Document Management Service](http://localhost:8187/swagger-ui.html)
 - `POST /api/documents`
 - `GET /api/documents/{id}`
 - `GET /api/documents/application/{applicationId}`
+- `GET /api/documents/loan/{loanId}`
 - `DELETE /api/documents/{id} (admin)`
 - `PUT /api/documents/{id}/verify (admin)`
 ### [Notification Service](http://localhost:8186/swagger-ui.html)
