@@ -25,16 +25,18 @@ Project is created with:
 
 ## Modules
 
-- [Customers Service](./customers/README.md)
-- [Loan Application Service](./application/README.md)
-- [Loan Processing Service](./processing/README.md)
-- [Credit Assessment Service](./credit-assessment/README.md)
-- [Payment Service](./payments/README.md)
-- [Notification Service](./notifications/README.md)
-- [Document Management Service](./documents/README.md)
-- [API Gateway](./apigw/README.md)
-- [Discovery Service](./discovery/README.md)
-- [Config Server](./config/README.md)
+- [Customers Service](customers/README.md)
+- [Loan Application Service](application/README.md)
+- [Loan Processing Service](processing/README.md)
+- [Loan Disbursement Service](disbursements/README.md)
+- [Loan Officer Service](officers/README.md)
+- [Credit Assessment Service](credit-assessment/README.md)
+- [Payment Service](payments/README.md)
+- [Notification Service](notifications/README.md)
+- [Document Management Service](documents/README.md)
+- [API Gateway](apigw/README.md)
+- [Discovery Service](discovery/README.md)
+- [Config Server](config/README.md)
 
 ---
 
@@ -62,45 +64,46 @@ docker compose up -d
 ## API Reference
 http://localhost:8080/swagger-ui.html
 
-### [Loan Application Service](http://localhost:8080/applications/)
+### [Loan Application Service](http://localhost:8181/swagger-ui.html)
 - `POST /api/applications`
 - `GET /api/applications/{id}`
-- `GET /api/applications/user/{userId}`
+- `GET /api/applications/customer/{userId}`
 - `PUT /api/applications/{id} (admin)`
 - `DELETE /api/applications/{id} (admin)`
-### [Customer Service](http://localhost:8080/customers)
+### [Customer Service](http://localhost:8182/swagger-ui.html)
 - `POST /api/customers`
 - `GET /api/customers/{id}`
 - `PUT /api/customers/{id}`
 - `DELETE /api/customers/{id} (admin)`
 - `GET /api/customers/search?name={name}`
-### [Credit Assessment Service](http://localhost:8080/credit-assessments)
+### [Credit Assessment Service](http://localhost:8184/swagger-ui.html)
 - `POST /api/credit-assessments`
 - `GET /api/credit-assessments/{id}`
 - `GET /api/credit-assessments/application/{applicationId}`
 - `PUT /api/credit-assessments/{id} (admin)`
-### [Loan Processing Service](http://localhost:8080/loans)
+### [Loan Processing Service](http://localhost:8183/swagger-ui.html)
 - `POST /api/loans/{applicationId}/process`
 - `GET /api/loans/{id}`
-- `GET /api/loans/user/{userId}`
-- `PUT /api/loans/{id}/status (admin)`
-- `GET /api/loans/search?status={status}`
-### [Document Management Service](http://localhost:8080/documents)
+- `GET /api/loans/customer/{customerId}`
+- `PUT /api/loans/{id}?status={status} (admin)`
+- `GET /api/loans?status={status}`
+### [Document Management Service](http://localhost:8187/swagger-ui.html)
 - `POST /api/documents`
 - `GET /api/documents/{id}`
 - `GET /api/documents/application/{applicationId}`
+- `GET /api/documents/loan/{loanId}`
 - `DELETE /api/documents/{id} (admin)`
 - `PUT /api/documents/{id}/verify (admin)`
-### [Notification Service](http://localhost:8080/notifications)
+### [Notification Service](http://localhost:8186/swagger-ui.html)
 - `POST /api/notifications`
-- `GET /api/notifications/user/{userId}`
+- `GET /api/notifications/customer/{customerId}`
 - `PUT /api/notifications/{id}/read`
 - `DELETE /api/notifications/{id} (admin)`
-### [Loan Disbursement Service](http://localhost:8080/disbursements)
+### [Loan Disbursement Service](http://localhost:8188/swagger-ui.html)
 - `POST /api/disbursements/{loanId}/disburse`
 - `GET /api/disbursements/{id}`
 - `GET /api/disbursements/loan/{loanId}`
-- `PUT /api/disbursements/{id}/status (admin)`
+- `PUT /api/disbursements/{id}?status={status} (admin)`
 ### [Loan Servicing Service](http://localhost:8080/repayments)
 - `POST /api/repayments`
 - `GET /api/repayments/{id}`
@@ -108,7 +111,16 @@ http://localhost:8080/swagger-ui.html
 - `PUT /api/repayments/{id} (admin)`
 - `GET /api/loans/{loanId}/schedule`
 - `PUT /api/loans/{loanId}/reschedule (admin)`
-
+### [Payments Service](http://localhost:8185/swagger-ui.html)
+- `POST /api/transactions`
+- `GET /api/transactions/{id}`
+- `GET /api/transactions/loan/{loanId}`
+- `PUT /api/transactions/{id} (admin)`
+### [Loan Officer Service](http://localhost:8189/swagger-ui.html)
+- `POST /api/officers`
+- `GET /api/officers/{id}`
+- `PUT /api/officers/{id}`
+- `DELETE /api/officers/{id} (admin)`
 ---
 ## Database Schema
 

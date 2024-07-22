@@ -10,7 +10,7 @@ public class LoanOfficer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long officerId;
+    private Long id;
 
     @Column(nullable = false, name = "first_name")
     private String firstName;

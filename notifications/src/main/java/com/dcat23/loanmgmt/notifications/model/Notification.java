@@ -12,16 +12,16 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long notificationId;
+    private Long id;
 
     @Column(nullable = false, name = "customer_id")
-    private Long customerId; // Reference to the customer in User Service
+    private Long customerId; // Reference to the customer in Customer Service
 
     @Column(nullable = false, name = "message")
     private String message;
 
     @Column(nullable = false, name = "is_read")
-    private Boolean isRead;
+    private Boolean isRead = false;
 
     @Column(nullable = false, name = "sent_date")
     private LocalDate notificationDate;

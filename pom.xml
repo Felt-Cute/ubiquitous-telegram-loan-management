@@ -49,6 +49,7 @@
         <module>credit-assessment</module>
         <module>customers</module>
         <module>disbursements</module>
+        <module>documents</module>
         <module>notifications</module>
         <module>officers</module>
         <module>payments</module>
@@ -102,10 +103,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-hal-explorer</artifactId>
         </dependency>
     </dependencies>
 

@@ -12,7 +12,7 @@ public class CreditAssessment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long assessmentId;
+    private Long id;
 
     @Column(nullable = false, name = "loan_application_id")
     private Long loanApplicationId; // Reference to the loan application in LoanApplicationService
