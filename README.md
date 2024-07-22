@@ -29,6 +29,7 @@ Project is created with:
 - [Loan Application Service](application/README.md)
 - [Loan Processing Service](processing/README.md)
 - [Loan Disbursement Service](disbursements/README.md)
+- [Loan Officer Service](officers/README.md)
 - [Credit Assessment Service](credit-assessment/README.md)
 - [Payment Service](payments/README.md)
 - [Notification Service](notifications/README.md)
@@ -115,7 +116,11 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/transactions/{id}`
 - `GET /api/transactions/loan/{loanId}`
 - `PUT /api/transactions/{id} (admin)`
-
+### [Loan Officer Service](http://localhost:8189/swagger-ui.html)
+- `POST /api/officers`
+- `GET /api/officers/{id}`
+- `PUT /api/officers/{id}`
+- `DELETE /api/officers/{id} (admin)`
 ---
 ## Database Schema
 

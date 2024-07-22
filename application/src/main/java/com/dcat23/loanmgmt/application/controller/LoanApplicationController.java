@@ -27,42 +27,43 @@ public class LoanApplicationController {
 
     private final LoanApplicationService loanApplicationService;
 
+    @PostMapping
     @Operation(
                 summary = "Create Loan Application",
                 description = "REST API to create a loan application")
     @ApiResponse(
                 responseCode = "201",
                 description = "HTTP Status CREATED")
-    @PostMapping
     public ResponseEntity<LoanApplication> createLoanApplication(@Valid @RequestBody LoanApplicationCreationDTO loanApplicationDTO) {
         LoanApplication savedLoanApplication = loanApplicationService.createLoanApplication(loanApplicationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLoanApplication);
     }
 
+    @GetMapping("/{id}")
     @Operation(
                 summary = "Get Loan Application By Id",
                 description = "REST API to fetch loan application details")
     @ApiResponse(
                 responseCode = "200",
                 description = "HTTP Status OK")
-    @GetMapping("/{id}")
     public ResponseEntity<LoanApplication> getLoanApplicationById(@PathVariable Long id) {
         LoanApplication loanApplication = loanApplicationService.getLoanApplicationById(id);
         return ResponseEntity.ok(loanApplication);
     }
 
+    @GetMapping("/customer/{userId}")
     @Operation(
                 summary = "Get Loan Applications By Customer Id",
                 description = "REST API to fetch all loans by customer id")
     @ApiResponse(
                 responseCode = "200",
                 description = "HTTP Status OK")
-    @GetMapping("/customer/{userId}")
     public ResponseEntity<List<LoanApplication>> getLoanApplicationsByUserId(@PathVariable Long userId) {
         List<LoanApplication> loanApplications = loanApplicationService.getLoanApplicationsByUserId(userId);
         return ResponseEntity.ok(loanApplications);
     }
 
+    @PutMapping("/{id}")
     @Operation(
                 summary = "Update Loan Application",
                 description = "REST API to update existing loan application details")
@@ -73,19 +74,18 @@ public class LoanApplicationController {
                     description = "HTTP Status OK"
             )
     })
-    @PutMapping("/{id}")
     public ResponseEntity<LoanApplication> updateLoanApplication(@PathVariable Long id, @Valid @RequestBody LoanApplicationUpdateDTO loanApplicationUpdateDTO) {
         LoanApplication updatedLoanApplication = loanApplicationService.updateLoanApplication(id, loanApplicationUpdateDTO);
         return ResponseEntity.ok(updatedLoanApplication);
     }
 
+    @DeleteMapping("/{id}")
     @Operation(
                 summary = "Delete Loan Application",
                 description = "REST API to delete loan application")
     @ApiResponse(
                 responseCode = "204",
                 description = "HTTP Status NO CONTENT")
-    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLoanApplication(@PathVariable Long id) {
         loanApplicationService.deleteLoanApplication(id);
         return ResponseEntity.noContent().build();
