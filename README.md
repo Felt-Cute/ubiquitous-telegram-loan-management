@@ -74,7 +74,7 @@ http://localhost:8080/swagger-ui.html
 - `PUT /api/customers/{id}`
 - `DELETE /api/customers/{id} (admin)`
 - `GET /api/customers/search?name={name}`
-### [Credit Assessment Service](http://localhost:8080/credit-assessments)
+### [Credit Assessment Service](http://localhost:8184/swagger-ui.html)
 - `POST /api/credit-assessments`
 - `GET /api/credit-assessments/{id}`
 - `GET /api/credit-assessments/application/{applicationId}`

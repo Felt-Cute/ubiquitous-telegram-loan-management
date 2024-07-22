@@ -14,8 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 version = "v1",
                 contact = @Contact(
                         name = "Devin Catuns",
-                        email = "contact@dcat.vercel.app",
-                        url = "https://dcat.vercel.app"
+                        email = "devincatuns1@gmail.com",
+                        url = "https://github.com/dcat23"
                 ),
                 license = @License(
                         name = "Apache 2.0",
