@@ -25,16 +25,16 @@ Project is created with:
 
 ## Modules
 
-- [Customers Service](./customers/README.md)
-- [Loan Application Service](./application/README.md)
-- [Loan Processing Service](./processing/README.md)
-- [Credit Assessment Service](./credit-assessment/README.md)
-- [Payment Service](./payments/README.md)
-- [Notification Service](./notifications/README.md)
-- [Document Management Service](./documents/README.md)
-- [API Gateway](./apigw/README.md)
-- [Discovery Service](./discovery/README.md)
-- [Config Server](./config/README.md)
+- [Customers Service](customers/README.md)
+- [Loan Application Service](application/README.md)
+- [Loan Processing Service](processing/README.md)
+- [Credit Assessment Service](credit-assessment/README.md)
+- [Payment Service](payments/README.md)
+- [Notification Service](notifications/README.md)
+- [Document Management Service](documents/README.md)
+- [API Gateway](apigw/README.md)
+- [Discovery Service](discovery/README.md)
+- [Config Server](config/README.md)
 
 ---
 
