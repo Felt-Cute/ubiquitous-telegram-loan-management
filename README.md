@@ -68,7 +68,7 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/applications/user/{userId}`
 - `PUT /api/applications/{id} (admin)`
 - `DELETE /api/applications/{id} (admin)`
-### [Customer Service](http://localhost:8080/customers)
+### [Customer Service](http://localhost:8182/swagger-ui.html)
 - `POST /api/customers`
 - `GET /api/customers/{id}`
 - `PUT /api/customers/{id}`
