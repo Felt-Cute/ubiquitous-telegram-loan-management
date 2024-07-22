@@ -65,7 +65,7 @@ http://localhost:8080/swagger-ui.html
 ### [Loan Application Service](http://localhost:8181/swagger-ui.html)
 - `POST /api/applications`
 - `GET /api/applications/{id}`
-- `GET /api/applications/user/{userId}`
+- `GET /api/applications/customer/{userId}`
 - `PUT /api/applications/{id} (admin)`
 - `DELETE /api/applications/{id} (admin)`
 ### [Customer Service](http://localhost:8182/swagger-ui.html)

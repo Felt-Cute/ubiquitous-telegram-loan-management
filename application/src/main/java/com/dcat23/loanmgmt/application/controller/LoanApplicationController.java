@@ -57,7 +57,7 @@ public class LoanApplicationController {
     @ApiResponse(
                 responseCode = "200",
                 description = "HTTP Status OK")
-    @GetMapping("/user/{userId}")
+    @GetMapping("/customer/{userId}")
     public ResponseEntity<List<LoanApplication>> getLoanApplicationsByUserId(@PathVariable Long userId) {
         List<LoanApplication> loanApplications = loanApplicationService.getLoanApplicationsByUserId(userId);
         return ResponseEntity.ok(loanApplications);
