@@ -60,4 +60,19 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(e.getStatusCode()).body(errorMessage);
     }
+
+    @ExceptionHandler(LoanApplicationNotFoundException.class)
+    public ResponseEntity<ErrorMessage> loanApplicationNotFoundExceptionHandler(
+            LoanApplicationNotFoundException e,
+            HttpServletRequest request
+    ) {
+        ErrorMessage errorMessage = new ErrorMessage(
+                request.getRequestURI(),
+                e.getMessage(),
+                e.getStatusCode(),
+                LocalDateTime.now()
+        );
+
+        return ResponseEntity.status(e.getStatusCode()).body(errorMessage);
+    }
 }

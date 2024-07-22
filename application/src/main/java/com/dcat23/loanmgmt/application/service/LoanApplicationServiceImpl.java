@@ -2,10 +2,7 @@ package com.dcat23.loanmgmt.application.service;
 
 import com.dcat23.loanmgmt.application.dto.LoanApplicationCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanApplicationUpdateDTO;
-import com.dcat23.loanmgmt.application.exception.LoanProductAmountException;
-import com.dcat23.loanmgmt.application.exception.LoanProductNotFoundException;
-import com.dcat23.loanmgmt.application.exception.LoanProductRequirementException;
-import com.dcat23.loanmgmt.application.exception.LoanProductTermException;
+import com.dcat23.loanmgmt.application.exception.*;
 import com.dcat23.loanmgmt.application.mapper.LoanApplicationMapper;
 import com.dcat23.loanmgmt.application.model.LoanApplication;
 import com.dcat23.loanmgmt.application.model.LoanProduct;
@@ -52,13 +49,14 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     }
 
     @Override
-    public LoanApplication getLoanApplicationById(Long id) {
-        return null;
+    public LoanApplication getLoanApplicationById(Long id) throws LoanApplicationNotFoundException {
+        return loanApplicationRepository.findById(id)
+                .orElseThrow(() -> new LoanApplicationNotFoundException(id));
     }
 
     @Override
-    public List<LoanApplication> getLoanApplicationsByUserId(Long userId) {
-        return List.of();
+    public List<LoanApplication> getLoanApplicationsByCustomerId(Long customerId) {
+        return loanApplicationRepository.findAllByCustomerId(customerId);
     }
 
     @Override

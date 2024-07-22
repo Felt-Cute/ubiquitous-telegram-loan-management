@@ -1,25 +1,20 @@
 package com.dcat23.loanmgmt.application.dto;
 
-import com.dcat23.loanmgmt.core.validation.annotations.FutureOrPresentLocalDate;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @Schema(
         name = "LoanApplicationCreation",
         description = "Schema to hold Loan Application details")
 public record LoanApplicationCreationDTO(
 
-        @Schema(description = "Loan amount in $$")
+        @Schema(description = "Loan amount in $$", example = "1000.00")
         @NotBlank(message = "amount must not be empty")
         @Min(value = 0, message = "Amount must be greater than 0")
         Double amount,
 
-        @Schema(description = "Loan term in months")
+        @Schema(description = "Loan term in months", example = "12")
         @NotBlank(message = "term must not be empty")
         @Min(value = 1, message = "Term must be greater than 1")
         Integer term,

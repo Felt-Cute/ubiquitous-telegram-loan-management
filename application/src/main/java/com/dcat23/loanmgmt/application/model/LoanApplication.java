@@ -3,7 +3,6 @@ package com.dcat23.loanmgmt.application.model;
 import com.dcat23.loanmgmt.core.model.LoanStatus;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 

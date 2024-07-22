@@ -64,15 +64,15 @@ public class LoanApplicationController {
         return ResponseEntity.ok(loanApplication);
     }
 
-    @GetMapping("/customer/{userId}")
+    @GetMapping("/customer/{customerId}")
     @Operation(
                 summary = "Get Loan Applications By Customer Id",
                 description = "REST API to fetch all loans by customer id")
     @ApiResponse(
                 responseCode = "200",
                 description = "HTTP Status OK")
-    public ResponseEntity<List<LoanApplication>> getLoanApplicationsByUserId(@PathVariable Long userId) {
-        List<LoanApplication> loanApplications = loanApplicationService.getLoanApplicationsByUserId(userId);
+    public ResponseEntity<List<LoanApplication>> getLoanApplicationsByCustomerId(@PathVariable Long customerId) {
+        List<LoanApplication> loanApplications = loanApplicationService.getLoanApplicationsByCustomerId(customerId);
         return ResponseEntity.ok(loanApplications);
     }
 
