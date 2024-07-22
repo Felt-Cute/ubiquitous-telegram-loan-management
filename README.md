@@ -108,6 +108,11 @@ http://localhost:8080/swagger-ui.html
 - `PUT /api/repayments/{id} (admin)`
 - `GET /api/loans/{loanId}/schedule`
 - `PUT /api/loans/{loanId}/reschedule (admin)`
+### [Payments Service](http://localhost:8185/swagger-ui.html)
+- `POST /api/transactions`
+- `GET /api/transactions/{id}`
+- `GET /api/transactions/loan/{loanId}`
+- `PUT /api/transactions/{id} (admin)`
 
 ---
 ## Database Schema
