@@ -79,12 +79,12 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/credit-assessments/{id}`
 - `GET /api/credit-assessments/application/{applicationId}`
 - `PUT /api/credit-assessments/{id} (admin)`
-### [Loan Processing Service](http://localhost:8080/loans)
+### [Loan Processing Service](http://localhost:8183/swagger-ui.html)
 - `POST /api/loans/{applicationId}/process`
 - `GET /api/loans/{id}`
-- `GET /api/loans/user/{userId}`
-- `PUT /api/loans/{id}/status (admin)`
-- `GET /api/loans/search?status={status}`
+- `GET /api/loans/customer/{customerId}`
+- `PUT /api/loans/{id}?status={status} (admin)`
+- `GET /api/loans?status={status}`
 ### [Document Management Service](http://localhost:8080/documents)
 - `POST /api/documents`
 - `GET /api/documents/{id}`
