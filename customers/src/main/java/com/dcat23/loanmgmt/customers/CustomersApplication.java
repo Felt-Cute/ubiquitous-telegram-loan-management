@@ -23,8 +23,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 )
         ),
         externalDocs = @ExternalDocumentation(
-                description = "Manages customer-related information such as personal details, contact information, etc.",
-                url = "https://dcat.vercel.app/swagger-ui.html"
+                description = "Loan management documentation",
+                url = "https://dcat23.vercel.app/swagger-ui.html"
         ))
 @SpringBootApplication
 public class CustomersApplication {
