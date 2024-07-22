@@ -7,6 +7,7 @@ import com.dcat23.loanmgmt.customers.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class CustomerController {
                 responseCode = "201",
                 description = "HTTP Status CREATED")
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerCreationDTO customerDTO) {
+    public ResponseEntity<Customer> createCustomer(@Valid @RequestBody CustomerCreationDTO customerDTO) {
         Customer createdCustomer = customerService.createCustomer(customerDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);
     }
@@ -56,7 +57,7 @@ public class CustomerController {
                 responseCode = "200",
                 description = "HTTP Status OK")
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody CustomerUpdateDTO customerUpdateDTO) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerUpdateDTO customerUpdateDTO) {
         Customer updatedCustomer = customerService.updateCustomer(id, customerUpdateDTO);
         return ResponseEntity.ok(updatedCustomer);
     }

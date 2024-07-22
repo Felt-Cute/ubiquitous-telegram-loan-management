@@ -23,8 +23,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 )
         ),
         externalDocs = @ExternalDocumentation(
-                description = "Loan management documentation",
-                url = "https://dcat23.vercel.app/swagger-ui.html"
+                description = "Loan management Github",
+                url = "https://github.com/Felt-Cute/ubiquitous-telegram-loan-management"
         ))
 @SpringBootApplication
 public class CustomersApplication {

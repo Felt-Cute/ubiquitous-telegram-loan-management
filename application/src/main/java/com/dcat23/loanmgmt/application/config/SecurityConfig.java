@@ -1,4 +1,4 @@
-package com.dcat23.loanmgmt.customers.config;
+package com.dcat23.loanmgmt.application.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -62,7 +62,7 @@ docker compose up -d
 ## API Reference
 http://localhost:8080/swagger-ui.html
 
-### [Loan Application Service](http://localhost:8080/applications/)
+### [Loan Application Service](http://localhost:8181/swagger-ui.html)
 - `POST /api/applications`
 - `GET /api/applications/{id}`
 - `GET /api/applications/user/{userId}`
