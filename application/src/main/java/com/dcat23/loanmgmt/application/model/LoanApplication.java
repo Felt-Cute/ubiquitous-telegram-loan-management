@@ -3,6 +3,7 @@ package com.dcat23.loanmgmt.application.model;
 import com.dcat23.loanmgmt.core.model.LoanStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 
@@ -18,21 +19,12 @@ public class LoanApplication {
     @Column(nullable = false, name = "amount")
     private Double amount;
 
-    @Column(nullable = false, name = "interest_rate")
-    private Double interestRate;
-
     @Column(nullable = false, name = "term")
     private Integer term;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
-
-    @Column(name = "end_date")
-    private LocalDate endDate;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "status")
-    private LoanStatus status;
+    private LoanStatus status = LoanStatus.PENDING;
 
     @ManyToOne(
             fetch = FetchType.EAGER,
@@ -43,5 +35,8 @@ public class LoanApplication {
 
     @Column(nullable = false, name = "customer_id")
     private Long customerId;
+
+    @Column(name = "application_date")
+    private LocalDate applicationDate;
 
 }
