@@ -61,8 +61,7 @@ docker compose up -d
 ```
 ---
 
-## API Reference
-http://localhost:8080/swagger-ui.html
+## [API Reference](http://localhost:8080/swagger-ui.html)
 
 ### [Loan Application Service](http://localhost:8181/swagger-ui.html)
 - `POST /api/applications`
@@ -124,62 +123,62 @@ http://localhost:8080/swagger-ui.html
 ---
 ## Database Schema
 
-### Loans
-- loan_id (Primary Key)
-- customer_id (Foreign Key to Customers table)
-- loan_amount
-- interest_rate
-- loan_term
-- start_date
-- end_date
-- status (e.g., pending, approved, active, closed)
-### Customers
-- customer_id (Primary Key)
-- first_name
-- last_name
-- email
-- phone_number
-- address
-### Loan Products
-- product_id (Primary Key)
-- product_name
-- interest_rate
-- min_amount
-- max_amount
-- min_term
-- max_term
-### Payment Schedule
-- schedule_id (Primary Key)
-- loan_id (Foreign Key to Loans table)
-- payment_date
-- payment_amount
-- principal_amount
-- interest_amount
-- status (e.g., pending, paid, overdue)
-### Transactions
-- transaction_id (Primary Key)
-- loan_id (Foreign Key to Loans table)
-- amount
-- transaction_date
-- transaction_type (e.g., disbursement, repayment, fee)
-### Documents
-- document_id (Primary Key)
-- loan_id (Foreign Key to Loans table)
-- document_type
-- file_name
-- upload_date
-### Loan Officers
-- officer_id (Primary Key)
-- first_name
-- last_name
-- email
-- phone_number
-### Loan History
-- history_id (Primary Key)
-- loan_id (Foreign Key to Loans table)
-- action_type (e.g., created, approved, disbursed, closed)
-- action_date
-- performed_by (Foreign Key to Loan Officers table)
+### [Loans](processing%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fprocessing%2Fmodel%2FLoan.java)
+- `loan_id` (Primary Key)
+- `customer_id` (Foreign Key to Customers table)
+- `loan_amount`
+- `interest_rate`
+- `loan_term`
+- `start_date`
+- `end_date`
+- `status`
+### [Customers](customers%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fcustomers%2Fmodel%2FCustomer.java)
+- `customer_id` (Primary Key)
+- `first_name`
+- `last_name`
+- `email`
+- `phone_number`
+- `address`
+### [Loan Products](application%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fapplication%2Fmodel%2FLoanProduct.java)
+- `product_id` (Primary Key)
+- `product_name`
+- `interest_rate`
+- `min_amount`
+- `max_amount`
+- `min_term`
+- `max_term`
+### [Payment Schedules](processing%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fprocessing%2Fmodel%2FPaymentSchedule.java)
+- `schedule_id` (Primary Key)
+- `loan_id` (Foreign Key to Loans table)
+- `payment_date`
+- `payment_amount`
+- `principal_amount`
+- `interest_amount`
+- `status`
+### [Transactions](payments%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fpayments%2Fmodel%2FTransaction.java)
+- `transaction_id` (Primary Key)
+- `loan_id` (Foreign Key to Loans table)
+- `amount`
+- `transaction_date`
+- `transaction_type`
+### [Documents](documents%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fdocuments%2Fmodel%2FDocument.java)
+- `document_id` (Primary Key)
+- `loan_id` (Foreign Key to Loans table)
+- `document_type`
+- `file_name`
+- `upload_date`
+### [Loan Officers](officers%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fofficers%2Fmodel%2FLoanOfficer.java)
+- `officer_id` (Primary Key)
+- `first_name`
+- `last_name`
+- `email`
+- `phone_number`
+### [Loan History](processing%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fprocessing%2Fmodel%2FLoanHistory.java)
+- `history_id` (Primary Key)
+- `loan_id` (Foreign Key to Loans table)
+- `action_type`
+- `action_date`
+- `performed_by` (Foreign Key to Loan Officers table)
 
 ---
 ## Implementation Steps
@@ -188,11 +187,11 @@ http://localhost:8080/swagger-ui.html
    - [] Gather detailed requirements from stakeholders
    - [] Identify types of loans, user roles, reporting needs, and compliance requirements
 2. **Choose Technology Stack**
-   - [1] Select Spring Boot for backend framework
-   - [2] Choose a database (e.g., PostgreSQL, MySQL)
+   - [x] Select Spring Boot for backend framework
+   - [x] Choose a database (e.g., PostgreSQL, MySQL)
    - [] Select a frontend framework (e.g., React, Angular)
 3. **Design Database Schema**
-   - [3] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
+   - [x] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
    - [] Ensure proper normalization and relationships between tables
 4. **Implement User Authentication and Authorization**
    - [] Set up Spring Security for authentication
@@ -207,8 +206,8 @@ http://localhost:8080/swagger-ui.html
    - [] Develop Loan Disbursement Service
    - [] Implement Loan Servicing Service
 6. **Implement RESTful APIs**
-   - [] Design and develop endpoints for each microservice
-   - [] Use Spring MVC for creating controllers
+   - [x] Design and develop endpoints for each microservice
+   - [x] Use Spring MVC for creating controllers
 7. **Integrate with External Services**
    - [] Implement integrations for credit checks, KYC verification, and payment gateways
 8. **Develop Frontend Application**
@@ -250,7 +249,7 @@ http://localhost:8080/swagger-ui.html
 - [] Implement logging and monitoring using ELK stack or Prometheus/Grafana
 - [] Use distributed tracing with Zipkin or Jaeger
 - [] Implement CI/CD pipeline using Jenkins or GitLab CI
-- [] Use Swagger or SpringFox for API documentation
+- [x] Use Swagger or SpringFox for API documentation
 - [] Implement data validation and error handling across all services
 ---
 ## Environment Variables
@@ -262,9 +261,6 @@ Add the following environment variables to the [.env](.env) file
 `DATABASE_NAME`
 `DATABASE_PASSWORD`
 `DATABASE_USER`
-`SPRING_APPLICATION_NAME`
-`SWAGGER_UI_PATH`
-`API_DOCS_PATH`
 `SERVER_PORT`
 
 ---

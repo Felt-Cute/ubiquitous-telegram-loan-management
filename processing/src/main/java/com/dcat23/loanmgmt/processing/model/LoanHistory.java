@@ -12,8 +12,7 @@ public class LoanHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long historyId;
-
+    private Long id;
 
     @Column(nullable = false, name = "loan_id")
     private Long loanId; // Reference to the loan in LoanProcessingService
