@@ -10,8 +10,8 @@ public class LoanProductAmountException extends LoanProductRequirementException 
     @Override
     public String getDetails() {
         if (this.loanProduct != null) {
-            return String.format("Amount must be between $%.2f - $%.2f",
-                    loanProduct.getMinAmount(), loanProduct.getMaxAmount());
+            return String.format("Amount must be between $%.2f - $%.2f for %s",
+                    loanProduct.getMinAmount(), loanProduct.getMaxAmount(), loanProduct.getName());
         }
         return super.getDetails();
     }

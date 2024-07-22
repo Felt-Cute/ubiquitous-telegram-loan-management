@@ -11,7 +11,8 @@ public class LoanProductTermException extends LoanProductRequirementException {
     @Override
     public String getDetails() {
         if (this.loanProduct != null) {
-            return String.format("Term must be between %d to %d months", loanProduct.getMinTerm(), loanProduct.getMaxTerm());
+            return String.format("Term must be between %d to %d months for %s",
+                    loanProduct.getMinTerm(), loanProduct.getMaxTerm(), loanProduct.getName());
         }
         return super.getDetails();
     }

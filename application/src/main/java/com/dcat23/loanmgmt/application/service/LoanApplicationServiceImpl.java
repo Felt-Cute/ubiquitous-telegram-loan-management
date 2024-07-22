@@ -4,6 +4,7 @@ import com.dcat23.loanmgmt.application.dto.LoanApplicationCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanApplicationUpdateDTO;
 import com.dcat23.loanmgmt.application.exception.LoanProductAmountException;
 import com.dcat23.loanmgmt.application.exception.LoanProductNotFoundException;
+import com.dcat23.loanmgmt.application.exception.LoanProductRequirementException;
 import com.dcat23.loanmgmt.application.exception.LoanProductTermException;
 import com.dcat23.loanmgmt.application.mapper.LoanApplicationMapper;
 import com.dcat23.loanmgmt.application.model.LoanApplication;
@@ -26,6 +27,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
     public LoanApplication createLoanApplication(LoanApplicationCreationDTO loanApplicationDTO) {
         LoanApplication loanApplication = LoanApplicationMapper
                 .mapToLoanApplication(loanApplicationDTO, new LoanApplication());
+
         LoanProduct loanProduct = getLoanProductById(loanApplicationDTO.loanProductId());
 
         checkLoanProductRequirements(loanProduct, loanApplication);
@@ -34,7 +36,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         return loanApplicationRepository.save(loanApplication);
     }
 
-    private void checkLoanProductRequirements(LoanProduct product, LoanApplication application) {
+    private void checkLoanProductRequirements(LoanProduct product, LoanApplication application) throws LoanProductRequirementException {
         if (application.getTerm() > product.getMaxTerm() || application.getTerm() < product.getMinTerm()) {
             throw new LoanProductTermException(product, application.getTerm());
         }
