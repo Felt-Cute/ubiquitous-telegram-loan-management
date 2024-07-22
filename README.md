@@ -91,9 +91,9 @@ http://localhost:8080/swagger-ui.html
 - `GET /api/documents/application/{applicationId}`
 - `DELETE /api/documents/{id} (admin)`
 - `PUT /api/documents/{id}/verify (admin)`
-### [Notification Service](http://localhost:8080/notifications)
+### [Notification Service](http://localhost:8186/swagger-ui.html)
 - `POST /api/notifications`
-- `GET /api/notifications/user/{userId}`
+- `GET /api/notifications/customer/{customerId}`
 - `PUT /api/notifications/{id}/read`
 - `DELETE /api/notifications/{id} (admin)`
 ### [Loan Disbursement Service](http://localhost:8080/disbursements)
