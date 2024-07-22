@@ -1,5 +1,6 @@
 package com.dcat23.loanmgmt.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,8 +16,8 @@ public class LoanProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "product_name")
-    private String productName;
+    @Column(nullable = false, name = "name", unique = true)
+    private String name;
 
     @Column(nullable = false, name = "interest_rate")
     private Double interestRate;
@@ -33,13 +34,13 @@ public class LoanProduct {
     @Column(nullable = false, name = "max_term")
     private Integer maxTerm;
 
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "loanProduct",
             cascade = {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.REFRESH, CascadeType.DETACH}
     )
-    @Column(name = "applications")
     private List<LoanApplication> applications = new ArrayList<>();
 
     public void addApplication(LoanApplication application) {

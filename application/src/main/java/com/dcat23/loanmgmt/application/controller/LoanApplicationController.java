@@ -4,7 +4,10 @@ import com.dcat23.loanmgmt.application.dto.LoanApplicationCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanApplicationUpdateDTO;
 import com.dcat23.loanmgmt.application.model.LoanApplication;
 import com.dcat23.loanmgmt.application.service.LoanApplicationService;
+import com.dcat23.loanmgmt.core.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,9 +34,19 @@ public class LoanApplicationController {
     @Operation(
                 summary = "Create Loan Application",
                 description = "REST API to create a loan application")
-    @ApiResponse(
+    @ApiResponses({
+        @ApiResponse(
                 responseCode = "201",
-                description = "HTTP Status CREATED")
+                description = "HTTP Status CREATED"),
+        @ApiResponse(
+                responseCode = "404",
+                description = "HTTP Status NOT FOUND",
+                content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
+        @ApiResponse(
+                responseCode = "400",
+                description = "HTTP Status BAD REQUEST",
+                content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
+    })
     public ResponseEntity<LoanApplication> createLoanApplication(@Valid @RequestBody LoanApplicationCreationDTO loanApplicationDTO) {
         LoanApplication savedLoanApplication = loanApplicationService.createLoanApplication(loanApplicationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLoanApplication);
