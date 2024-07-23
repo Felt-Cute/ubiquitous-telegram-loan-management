@@ -18,9 +18,6 @@ public class LoanProductRequirementException extends RuntimeException {
     }
 
     public String getDetails() {
-        if (loanProduct != null) {
-            return "Requirements not met for " + loanProduct.getName();
-        }
         return super.getMessage();
     }
 

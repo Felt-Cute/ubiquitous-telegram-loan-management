@@ -6,6 +6,7 @@ import com.dcat23.loanmgmt.application.model.LoanProduct;
 import com.dcat23.loanmgmt.application.service.LoanProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(
+    name = "REST APIs for Loan Products",
+    description = "REST APIs to CREATE, UPDATE, FETCH and DELETE Loan Products")
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
@@ -21,7 +25,7 @@ public class LoanProductController {
 
     private final LoanProductService loanProductService;
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(
             summary = "Get All Loan Products",
             description = "REST API to FETCH Loan Products")
@@ -45,7 +49,7 @@ public class LoanProductController {
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
-    @PostMapping("/")
+    @PostMapping
     @Operation(
             summary = "Create Loan Product",
             description = "REST API to Create a new Loan Product")
