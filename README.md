@@ -69,6 +69,11 @@ docker compose up -d
 - `GET /api/applications/customer/{userId}`
 - `PUT /api/applications/{id} (admin)`
 - `DELETE /api/applications/{id} (admin)`
+- `POST /api/products (admin)`
+- `GET /api/products`
+- `GET /api/products/{id}`
+- `PUT /api/products/{id} (admin)`
+- `DELETE /api/products/{id} (admin)`
 ### [Customer Service](http://localhost:8182/swagger-ui.html)
 - `POST /api/customers`
 - `GET /api/customers/{id}`
@@ -140,13 +145,21 @@ docker compose up -d
 - `phone_number`
 - `address`
 ### [Loan Products](application%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fapplication%2Fmodel%2FLoanProduct.java)
-- `product_id` (Primary Key)
+- `id` (Primary Key)
 - `product_name`
 - `interest_rate`
 - `min_amount`
 - `max_amount`
 - `min_term`
 - `max_term`
+### [Loan Applications](application%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fapplication%2Fmodel%2FLoanApplication.java)
+- `id` (Primary Key)
+- `amount`
+- `term`
+- `status`
+- `loan_product_id` (Foreign Key to Loan Product)
+- `customer_id`
+- `application_date`
 ### [Payment Schedules](processing%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fprocessing%2Fmodel%2FPaymentSchedule.java)
 - `schedule_id` (Primary Key)
 - `loan_id` (Foreign Key to Loans table)
@@ -197,7 +210,7 @@ docker compose up -d
    - [] Set up Spring Security for authentication
    - [] Implement role-based access control (e.g., admin, loan officer, borrower)
 5. **Develop Core Microservices**
-   - [] Implement Loan Application Service
+   - [x] Implement Loan Application Service
    - [] Create Customer Service
    - [] Develop Credit Assessment Service
    - [] Build Loan Processing Service
