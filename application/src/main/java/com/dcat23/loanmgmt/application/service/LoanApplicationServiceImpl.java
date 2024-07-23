@@ -61,7 +61,29 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
 
     @Override
     public LoanApplication updateLoanApplication(Long id, LoanApplicationUpdateDTO loanApplicationUpdateDTO) {
-        return null;
+        LoanApplication loanApplication = getLoanApplicationById(id);
+
+        LoanApplicationMapper.mapToLoanApplication(loanApplicationUpdateDTO, loanApplication);
+
+        LoanProduct loanProduct = updateLoanProduct(loanApplicationUpdateDTO.loanProductId(), loanApplication);
+
+        checkLoanProductRequirements(loanProduct, loanApplication);
+
+        return loanApplicationRepository.save(loanApplication);
+    }
+
+    private LoanProduct updateLoanProduct(Long updatedLoanProductId, LoanApplication loanApplication) {
+        LoanProduct loanProduct = loanApplication.getLoanProduct();
+
+        if (updatedLoanProductId == null) return loanProduct;
+
+        if (!loanProduct.getId().equals(updatedLoanProductId)) {
+            loanProduct.removeApplication(loanApplication);
+            loanProductRepository.save(loanProduct);
+            loanProduct = getLoanProductById(updatedLoanProductId);
+            loanProduct.addApplication(loanApplication);
+        }
+        return loanProduct;
     }
 
     @Override

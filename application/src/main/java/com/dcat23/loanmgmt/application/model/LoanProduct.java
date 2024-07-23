@@ -50,4 +50,26 @@ public class LoanProduct {
         applications.add(application);
         application.setLoanProduct(this);
     }
+
+    public void removeApplication(LoanApplication application) {
+        if (applications == null) {
+            applications = new ArrayList<>();
+        }
+        applications.remove(application);
+        application.setLoanProduct(null);
+    }
+
+    @Override
+    public String toString() {
+        return "LoanProduct{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", interestRate=" + interestRate +
+                ", minAmount=" + minAmount +
+                ", maxAmount=" + maxAmount +
+                ", minTerm=" + minTerm +
+                ", maxTerm=" + maxTerm +
+                ", applications=" + applications.size() +
+                '}';
+    }
 }
