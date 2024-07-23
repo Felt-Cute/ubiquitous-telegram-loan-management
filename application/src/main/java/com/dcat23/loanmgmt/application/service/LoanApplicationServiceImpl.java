@@ -88,6 +88,6 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
 
     @Override
     public void deleteLoanApplication(Long id) {
-
+        loanApplicationRepository.deleteById(id);
     }
 }
