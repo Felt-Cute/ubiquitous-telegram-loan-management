@@ -1,7 +1,11 @@
 package com.dcat23.loanmgmt.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -12,8 +16,8 @@ public class LoanProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "product_name")
-    private String productName;
+    @Column(nullable = false, name = "name", unique = true)
+    private String name;
 
     @Column(nullable = false, name = "interest_rate")
     private Double interestRate;
@@ -29,4 +33,43 @@ public class LoanProduct {
 
     @Column(nullable = false, name = "max_term")
     private Integer maxTerm;
+
+    @JsonIgnore
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "loanProduct",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.REFRESH, CascadeType.DETACH}
+    )
+    private List<LoanApplication> applications = new ArrayList<>();
+
+    public void addApplication(LoanApplication application) {
+        if (applications == null) {
+            applications = new ArrayList<>();
+        }
+        applications.add(application);
+        application.setLoanProduct(this);
+    }
+
+    public void removeApplication(LoanApplication application) {
+        if (applications == null) {
+            applications = new ArrayList<>();
+        }
+        applications.remove(application);
+        application.setLoanProduct(null);
+    }
+
+    @Override
+    public String toString() {
+        return "LoanProduct{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", interestRate=" + interestRate +
+                ", minAmount=" + minAmount +
+                ", maxAmount=" + maxAmount +
+                ", minTerm=" + minTerm +
+                ", maxTerm=" + maxTerm +
+                ", applications=" + applications.size() +
+                '}';
+    }
 }

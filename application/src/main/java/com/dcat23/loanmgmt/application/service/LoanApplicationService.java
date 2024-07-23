@@ -11,7 +11,7 @@ public interface LoanApplicationService {
 
     LoanApplication getLoanApplicationById(Long id);
 
-    List<LoanApplication> getLoanApplicationsByUserId(Long userId);
+    List<LoanApplication> getLoanApplicationsByCustomerId(Long userId);
 
     LoanApplication updateLoanApplication(Long id, LoanApplicationUpdateDTO loanApplicationUpdateDTO);
 
