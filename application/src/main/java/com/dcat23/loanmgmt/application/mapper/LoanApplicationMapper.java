@@ -22,6 +22,8 @@ public class LoanApplicationMapper {
     }
 
     public static void mapToLoanApplication(LoanApplicationUpdateDTO updateDTO, LoanApplication loanApplication) {
+        if (updateDTO == null || loanApplication == null) return;
+
         if (updateDTO.amount() != null) {
             loanApplication.setAmount(updateDTO.amount());
         }

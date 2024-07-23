@@ -12,7 +12,6 @@ import jakarta.validation.constraints.NotNull;
 public record LoanProductCreationDTO(
 
         @Schema(description = "Loan product name")
-        @NotNull
         @NotBlank(message = "Name must not be empty")
         String name,
 

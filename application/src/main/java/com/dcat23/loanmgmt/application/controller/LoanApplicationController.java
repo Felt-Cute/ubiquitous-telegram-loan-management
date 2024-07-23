@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(
-        name = "CRUD REST APIs for Loan Applications",
+        name = "REST APIs for Loan Applications",
         description = "REST APIs to CREATE, UPDATE, FETCH and DELETE Loan Applications")
 @RestController
 @RequestMapping("/api/applications")

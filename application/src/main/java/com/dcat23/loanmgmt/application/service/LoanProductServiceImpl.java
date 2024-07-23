@@ -40,7 +40,6 @@ public class LoanProductServiceImpl implements LoanProductService {
         if (loanProduct.getInterestRate() < 0 || loanProduct.getInterestRate() > 3) {
             throw new LoanProductRequirementException("Interest rate must be between 0 and 3");
         }
-
         if (loanProduct.getMinAmount() >= loanProduct.getMaxAmount()) {
             throw new LoanProductRequirementException("Minimum AMOUNT must be less than maximum AMOUNT");
         }
@@ -51,11 +50,14 @@ public class LoanProductServiceImpl implements LoanProductService {
 
     @Override
     public LoanProduct updateLoanProduct(Long id, LoanProductUpdateDTO loanProductDTO) {
-        return null;
+        LoanProduct loanProduct = getLoanProductById(id);
+        LoanProductMapper.mapToLoanProduct(loanProductDTO, loanProduct);
+        checkLoanProductRequirements(loanProduct);
+        return loanProductRepository.save(loanProduct);
     }
 
     @Override
     public void deleteLoanProduct(Long id) {
-
+        loanProductRepository.deleteById(id);
     }
 }
