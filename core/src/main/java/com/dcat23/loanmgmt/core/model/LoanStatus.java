@@ -4,5 +4,6 @@ public enum LoanStatus {
     PENDING,
     APPROVED,
     ACTIVE,
-    CLOSED
+    CLOSED,
+    CANCELLED,
 }

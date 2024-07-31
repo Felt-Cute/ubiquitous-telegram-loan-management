@@ -3,7 +3,7 @@ package com.dcat23.loanmgmt.application.controller;
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanProductResponse;
 import com.dcat23.loanmgmt.application.dto.LoanProductUpdateDTO;
-import com.dcat23.loanmgmt.application.service.LoanProductService;
+import com.dcat23.loanmgmt.application.service.client.LoanProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

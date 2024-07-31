@@ -1,4 +1,4 @@
-package com.dcat23.loanmgmt.application.service;
+package com.dcat23.loanmgmt.application.service.client;
 
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanProductResponse;

@@ -1,4 +1,4 @@
-package com.dcat23.loanmgmt.application.service;
+package com.dcat23.loanmgmt.application.service.impl;
 
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
 import com.dcat23.loanmgmt.application.dto.LoanProductResponse;
@@ -8,6 +8,7 @@ import com.dcat23.loanmgmt.application.exception.LoanProductRequirementException
 import com.dcat23.loanmgmt.application.mapper.LoanProductMapper;
 import com.dcat23.loanmgmt.application.model.LoanProduct;
 import com.dcat23.loanmgmt.application.repository.LoanProductRepository;
+import com.dcat23.loanmgmt.application.service.client.LoanProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
