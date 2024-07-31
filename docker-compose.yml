@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres_ut_restaurant_ordering
+    container_name: postgres_ut_loan_management
     image: postgres:alpine3.19
     environment:
       POSTGRES_USER: ${DATABASE_USER}

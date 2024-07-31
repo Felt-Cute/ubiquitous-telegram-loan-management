@@ -1,19 +1,19 @@
 package com.dcat23.loanmgmt.application.service;
 
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
+import com.dcat23.loanmgmt.application.dto.LoanProductResponse;
 import com.dcat23.loanmgmt.application.dto.LoanProductUpdateDTO;
-import com.dcat23.loanmgmt.application.model.LoanProduct;
 
 import java.util.List;
 
 public interface LoanProductService {
-    LoanProduct getLoanProductById(Long id);
+    LoanProductResponse getLoanProductById(Long id);
 
-    List<LoanProduct> getAllLoanProducts();
+    List<LoanProductResponse> getAllLoanProducts();
 
-    LoanProduct createLoanProduct(LoanProductCreationDTO loanProductDTO);
+    LoanProductResponse createLoanProduct(LoanProductCreationDTO loanProductDTO);
 
-    LoanProduct updateLoanProduct(Long id, LoanProductUpdateDTO loanProductDTO);
+    LoanProductResponse updateLoanProduct(Long id, LoanProductUpdateDTO loanProductDTO);
 
     void deleteLoanProduct(Long id);
 }

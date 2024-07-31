@@ -1,8 +1,8 @@
 package com.dcat23.loanmgmt.application.controller;
 
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
+import com.dcat23.loanmgmt.application.dto.LoanProductResponse;
 import com.dcat23.loanmgmt.application.dto.LoanProductUpdateDTO;
-import com.dcat23.loanmgmt.application.model.LoanProduct;
 import com.dcat23.loanmgmt.application.service.LoanProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -32,8 +32,8 @@ public class LoanProductController {
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status OK")
-    public ResponseEntity<List<LoanProduct>> getAllLoanProducts(){
-        List<LoanProduct> products = loanProductService.getAllLoanProducts();
+    public ResponseEntity<List<LoanProductResponse>> getAllLoanProducts(){
+        List<LoanProductResponse> products = loanProductService.getAllLoanProducts();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 
@@ -44,8 +44,8 @@ public class LoanProductController {
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status OK")
-    public ResponseEntity<LoanProduct> getLoanProductById(@PathVariable Long id){
-        LoanProduct product = loanProductService.getLoanProductById(id);
+    public ResponseEntity<LoanProductResponse> getLoanProductById(@PathVariable Long id){
+        LoanProductResponse product = loanProductService.getLoanProductById(id);
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
@@ -56,8 +56,8 @@ public class LoanProductController {
     @ApiResponse(
             responseCode = "201",
             description = "HTTP Status CREATED")
-    public ResponseEntity<LoanProduct> createLoanProduct(@Valid @RequestBody LoanProductCreationDTO loanProductDTO){
-        LoanProduct product = loanProductService.createLoanProduct(loanProductDTO);
+    public ResponseEntity<LoanProductResponse> createLoanProduct(@Valid @RequestBody LoanProductCreationDTO loanProductDTO){
+        LoanProductResponse product = loanProductService.createLoanProduct(loanProductDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
@@ -68,8 +68,8 @@ public class LoanProductController {
     @ApiResponse(
             responseCode = "200",
             description = "HTTP Status OK")
-    public ResponseEntity<LoanProduct> updateLoanProduct(@PathVariable Long id, @Valid @RequestBody LoanProductUpdateDTO loanProductDTO){
-        LoanProduct updatedProduct = loanProductService.updateLoanProduct(id, loanProductDTO);
+    public ResponseEntity<LoanProductResponse> updateLoanProduct(@PathVariable Long id, @Valid @RequestBody LoanProductUpdateDTO loanProductDTO){
+        LoanProductResponse updatedProduct = loanProductService.updateLoanProduct(id, loanProductDTO);
         return ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
     }
 

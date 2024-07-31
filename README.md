@@ -274,7 +274,6 @@ Add the following environment variables to the [.env](.env) file
 `DATABASE_NAME`
 `DATABASE_PASSWORD`
 `DATABASE_USER`
-`SERVER_PORT`
 
 ---
 

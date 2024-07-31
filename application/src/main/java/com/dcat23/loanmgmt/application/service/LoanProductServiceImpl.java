@@ -1,6 +1,7 @@
 package com.dcat23.loanmgmt.application.service;
 
 import com.dcat23.loanmgmt.application.dto.LoanProductCreationDTO;
+import com.dcat23.loanmgmt.application.dto.LoanProductResponse;
 import com.dcat23.loanmgmt.application.dto.LoanProductUpdateDTO;
 import com.dcat23.loanmgmt.application.exception.LoanProductNotFoundException;
 import com.dcat23.loanmgmt.application.exception.LoanProductRequirementException;
@@ -16,24 +17,33 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LoanProductServiceImpl implements LoanProductService {
 
+    private final LoanProductMapper loanProductMapper = LoanProductMapper.INSTANCE;
+
     private final LoanProductRepository loanProductRepository;
 
     @Override
-    public LoanProduct getLoanProductById(Long id) {
+    public LoanProductResponse getLoanProductById(Long id) {
+        LoanProduct product = findById(id);
+        return loanProductMapper.toResponse(product);
+    }
+
+    private LoanProduct findById(Long id) {
         return loanProductRepository.findById(id)
                 .orElseThrow(() -> new LoanProductNotFoundException(id));
     }
 
     @Override
-    public List<LoanProduct> getAllLoanProducts() {
-        return loanProductRepository.findAll();
+    public List<LoanProductResponse> getAllLoanProducts() {
+        List<LoanProduct> all = loanProductRepository.findAll();
+        return loanProductMapper.toResponseList(all);
     }
 
     @Override
-    public LoanProduct createLoanProduct(LoanProductCreationDTO loanProductDTO) {
-        LoanProduct loanProduct = LoanProductMapper.mapToLoanProduct(loanProductDTO, new LoanProduct());
+    public LoanProductResponse createLoanProduct(LoanProductCreationDTO loanProductDTO) {
+        LoanProduct loanProduct = loanProductMapper.toEntity(loanProductDTO);
         checkLoanProductRequirements(loanProduct);
-        return loanProductRepository.save(loanProduct);
+        LoanProduct saved = loanProductRepository.save(loanProduct);
+        return loanProductMapper.toResponse(saved);
     }
 
     private void checkLoanProductRequirements(LoanProduct loanProduct) {
@@ -49,15 +59,18 @@ public class LoanProductServiceImpl implements LoanProductService {
     }
 
     @Override
-    public LoanProduct updateLoanProduct(Long id, LoanProductUpdateDTO loanProductDTO) {
-        LoanProduct loanProduct = getLoanProductById(id);
-        LoanProductMapper.mapToLoanProduct(loanProductDTO, loanProduct);
+    public LoanProductResponse updateLoanProduct(Long id, LoanProductUpdateDTO loanProductDTO) {
+        LoanProduct loanProduct = findById(id);
+        loanProductMapper.update(loanProductDTO, loanProduct);
         checkLoanProductRequirements(loanProduct);
-        return loanProductRepository.save(loanProduct);
+        LoanProduct saved = loanProductRepository.save(loanProduct);
+        return loanProductMapper.toResponse(saved);
     }
 
     @Override
     public void deleteLoanProduct(Long id) {
-        loanProductRepository.deleteById(id);
+        LoanProduct loanProduct = findById(id);
+        loanProduct.setIsActive(false);
+        loanProductRepository.save(loanProduct);
     }
 }

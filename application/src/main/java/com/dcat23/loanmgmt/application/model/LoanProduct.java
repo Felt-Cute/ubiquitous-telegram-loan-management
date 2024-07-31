@@ -34,6 +34,9 @@ public class LoanProduct {
     @Column(nullable = false, name = "max_term")
     private Integer maxTerm;
 
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = true;
+
     @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
