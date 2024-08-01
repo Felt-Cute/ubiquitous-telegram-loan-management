@@ -19,7 +19,8 @@ public interface LoanProductMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void update(LoanProductUpdateDTO loanProductDTO, @MappingTarget LoanProduct loanProduct);
 
-    LoanProductResponse toResponse(LoanProduct saved);
+    @Mapping(target = "applications", expression = "java(product.getApplications().size())")
+    LoanProductResponse toResponse(LoanProduct product);
 
     List<LoanProductResponse> toResponseList(List<LoanProduct> products);
 }

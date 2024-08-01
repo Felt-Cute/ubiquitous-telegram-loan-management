@@ -1,9 +1,54 @@
-# Ubiquitous Telegram Loan Management
+<a id="readme-top"></a>
+[![GitHub Stars][stars-shield]][stars-url]
+[![GitHub Issues][issues-shield]][issues-url]
+[![Current Version][version-shield]][repo-url]
+[![Live Demo][live-demo-shield]][live-demo-url]
 
-[![GitHub Stars](https://img.shields.io/github/stars/felt-cute/ubiquitous-telegram-loan-management.svg)](https://github.com/felt-cute/ubiquitous-telegram-loan-management/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/felt-cute/ubiquitous-telegram-loan-management.svg)](https://github.com/felt-cute/ubiquitous-telegram-loan-management/issues)
-[![Current Version](https://img.shields.io/badge/version-0.0.1-green.svg)](https://github.com/felt-cute/ubiquitous-telegram-loan-management)
-[![Live Demo](https://img.shields.io/badge/demo-offline-red.svg)](https://fmhh.vercel.app)
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/felt-cute/ubiquitous-telegram-loan-management">
+    <img src="logo.svg" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Ubiquitous Telegram Loan Management</h3>
+
+  <p align="center">
+    Loan Management System designed to handle the end-to-end process of loan management.
+    <br />
+    <a href="https://github.com/felt-cute/ubiquitous-telegram-loan-management"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/felt-cute/ubiquitous-telegram-loan-management">View Demo</a>
+    ·
+    <a href="https://github.com/felt-cute/ubiquitous-telegram-loan-management/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/felt-cute/ubiquitous-telegram-loan-management/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-the-project">Overview</a></li>
+    <li><a href="#technical-stack">Tech Stack</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#api-reference">API Reference</a></li>
+    <li><a href="#database-schema">Database Schema</a></li>
+    <li><a href="#implementation-steps">Implementation Steps</a></li>
+    <li><a href="#additional-considerations">Additional Considerations</a></li>
+    <li><a href="#contact">Contact</a></li>
+
+  </ol>
+</details>
+
+---
+
+<!-- Overview -->
+## Overview
+
 
 The Loan Management System web app designed to handle the end-to-end
 process of loan management, from user registration and loan application
@@ -15,14 +60,54 @@ scalability, maintainability, and flexibility.
 Each component of the system is developed as an independent
 microservice, allowing for individual scaling and deployment.
 
----
-## Technologies
-Project is created with:
-* [Java 17](https://docs.oracle.com/en/java/javase/21/)
-* [Spring Boot: 3.3.2](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
+## Technical Stack
+
+### Frontend
+- **Framework**: React building a dynamic user interface.
+- **State Management**: Redux or Context API for managing application state.
+
+### Backend
+- **Framework**: Spring Boot for the backend RESTful API.
+- **Database**: PostgreSQL for storing user data, resources, and discussions.
+
+### Hosting and Deployment
+- **Cloud Provider**: AWS, for hosting the application.
+- **Containerization**: Docker for containerizing the application for easier deployment and scalability.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<!-- Setup -->
+## Setup
+
+Copy environment variables to the [.env](.env) file
+
+```bash
+cp .env.example .env
+```
+
+`DATABASE_HOST`
+`DATABASE_PORT`
+`DATABASE_NAME`
+`DATABASE_PASSWORD`
+`DATABASE_USER`
+
+Start the services
+
+```bash
+docker compose up -d
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<!-- Modules -->
 ## Modules
 
 - [Customers Service](customers/README.md)
@@ -38,30 +123,13 @@ Project is created with:
 - [Discovery Service](discovery/README.md)
 - [Config Server](config/README.md)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
-## Setup
+<!-- API Reference -->
 
-Clone the project
-
-```bash
-  git clone https://github.com/felt-cute/ubiquitous-telegram-loan-management.git
-  cd ubiquitous-telegram-loan-management
-```
-
-Copy environment variables
-```bash
-cp .env.example .env
-```
-
-Start the services
-
-```bash
-docker compose up -d
-```
----
-
-## [API Reference](http://localhost:8080/swagger-ui.html)
+## [API Reference](http://localhost:8080/actuator/gateway/routes)
 
 ### [Loan Application Service](http://localhost:8181/swagger-ui.html)
 - `POST /api/applications`
@@ -125,8 +193,14 @@ docker compose up -d
 - `GET /api/officers/{id}`
 - `PUT /api/officers/{id}`
 - `DELETE /api/officers/{id} (admin)`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
+
+<!-- Database Schema -->
+
 ## Database Schema
+
 
 ### [Loans](processing%2Fsrc%2Fmain%2Fjava%2Fcom%2Fdcat23%2Floanmgmt%2Fprocessing%2Fmodel%2FLoan.java)
 - `loan_id` (Primary Key)
@@ -193,42 +267,48 @@ docker compose up -d
 - `action_date`
 - `performed_by` (Foreign Key to Loan Officers table)
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
+
+<!-- Implementation Steps -->
+
 ## Implementation Steps
 
 1. **Define Requirements and Scope**
-   - [] Gather detailed requirements from stakeholders
-   - [] Identify types of loans, user roles, reporting needs, and compliance requirements
+    - [] Gather detailed requirements from stakeholders
+    - [] Identify types of loans, user roles, reporting needs, and compliance requirements
 2. **Choose Technology Stack**
-   - [x] Select Spring Boot for backend framework
-   - [x] Choose a database (e.g., PostgreSQL, MySQL)
-   - [] Select a frontend framework (e.g., React, Angular)
+    - [x] Select Spring Boot for backend framework
+    - [x] Choose a database (e.g., PostgreSQL, MySQL)
+    - [] Select a frontend framework (e.g., React, Angular)
 3. **Design Database Schema**
-   - [x] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
-   - [] Ensure proper normalization and relationships between tables
+    - [x] Create tables for loans, customers, loan products, payment schedules, transactions, documents, loan officers, and loan history
+    - [] Ensure proper normalization and relationships between tables
 4. **Implement User Authentication and Authorization**
-   - [] Set up Spring Security for authentication
-   - [] Implement role-based access control (e.g., admin, loan officer, borrower)
+    - [] Set up Spring Security for authentication
+    - [] Implement role-based access control (e.g., admin, loan officer, borrower)
 5. **Develop Core Microservices**
-   - [x] Implement Loan Application Service
-   - [] Create Customer Service
-   - [] Develop Credit Assessment Service
-   - [] Build Loan Processing Service
-   - [] Implement Document Management Service
-   - [] Create Notification Service
-   - [] Develop Loan Disbursement Service
-   - [] Implement Loan Servicing Service
+    - [x] Implement Loan Application Service
+    - [] Create Customer Service
+    - [] Develop Credit Assessment Service
+    - [] Build Loan Processing Service
+    - [] Implement Document Management Service
+    - [] Create Notification Service
+    - [] Develop Loan Disbursement Service
+    - [] Implement Loan Servicing Service
 6. **Implement RESTful APIs**
-   - [x] Design and develop endpoints for each microservice
-   - [x] Use Spring MVC for creating controllers
+    - [x] Design and develop endpoints for each microservice
+    - [x] Use Spring MVC for creating controllers
 7. **Integrate with External Services**
-   - [] Implement integrations for credit checks, KYC verification, and payment gateways
+    - [] Implement integrations for credit checks, KYC verification, and payment gateways
 8. **Develop Frontend Application**
-   - [] Create user interfaces for loan application, management, and reporting
-   - [] Implement responsive design for multiple devices
+    - [] Create user interfaces for loan application, management, and reporting
+    - [] Implement responsive design for multiple devices
 9. **Implement Data Validation and Error Handling**
-   - [] Use Spring Validation for input validation
-   - [] Implement global exception handling
+    - [] Use Spring Validation for input validation
+    - [] Implement global exception handling
 10. **Set Up Logging and Monitoring**
     - [] Implement logging using SLF4J and Logback
     - [] Set up monitoring using tools like Prometheus and Grafana
@@ -257,30 +337,37 @@ docker compose up -d
     - [] Establish processes for regular updates and patches
     - [] Implement a system for handling user support and bug reports
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
+
+<!-- Additional Considerations -->
 ## Additional Considerations
+
 - [] Implement logging and monitoring using ELK stack or Prometheus/Grafana
 - [] Use distributed tracing with Zipkin or Jaeger
 - [] Implement CI/CD pipeline using Jenkins or GitLab CI
 - [x] Use Swagger or SpringFox for API documentation
 - [] Implement data validation and error handling across all services
----
-## Environment Variables
 
-Add the following environment variables to the [.env](.env) file
 
-`DATABASE_HOST`
-`DATABASE_PORT`
-`DATABASE_NAME`
-`DATABASE_PASSWORD`
-`DATABASE_USER`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://dcatuns.vercel.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/devin-catuns/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
+<!-- CONTACT -->
+## Contact
+
+Devin Catuns - <a href="mailto:devincatuns1@gmail.com">devincatuns1@gmail.com</a>
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![portfolio][porfolio-shield]][portfolio-url]
+
+[Ubiquitous Telegram Loan Management][repo-url]
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 ## Buy me a coffee
@@ -289,12 +376,25 @@ Whether you use this project, have learned something from it, or just like it, p
 
 <a href="https://www.buymeacoffee.com/devincatunj" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
----
 
-## Feedback
-
-If you have any feedback, please reach out to us at 
-
-<a href="mailto:devincatuns1@gmail.com">devincatuns1@gmail.com</a>
-
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[version-shield]: https://img.shields.io/badge/version-0.0.1-green.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/felt-cute/ubiquitous-telegram-loan-management.svg?style=for-the-badge&logo=github
+[contributors-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/felt-cute/ubiquitous-telegram-loan-management.svg?style=for-the-badge
+[forks-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management/network/members
+[stars-shield]: https://img.shields.io/github/stars/felt-cute/ubiquitous-telegram-loan-management.svg?style=for-the-badge&&logo=github
+[stars-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management/stargazers
+[issues-shield]: https://img.shields.io/github/issues/felt-cute/ubiquitous-telegram-loan-management.svg?style=for-the-badge
+[issues-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management/issues
+[license-shield]: https://img.shields.io/github/license/felt-cute/ubiquitous-telegram-loan-management.svg?style=for-the-badge
+[license-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0A66C2
+[linkedin-url]: https://www.linkedin.com/in/devin-catuns/
+[live-demo-shield]: https://img.shields.io/badge/demo-offline-red.svg?style=for-the-badge
+[live-demo-url]: https://filn.vercel.app
+[repo-url]: https://github.com/felt-cute/ubiquitous-telegram-loan-management
+[porfolio-shield]: https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white
+[portfolio-url]: https://dcat23.vercel.app/
 

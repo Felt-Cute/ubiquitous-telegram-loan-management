@@ -1,7 +1,5 @@
 package com.dcat23.loanmgmt.application.dto;
 
-import java.util.List;
-
 public record LoanProductResponse(
         String name,
         Double interestRate,
@@ -10,6 +8,6 @@ public record LoanProductResponse(
         Integer minTerm,
         Integer maxTerm,
         Boolean isActive,
-        List<LoanApplicationResponse> applications
+        Integer applications
 ) {
 }
