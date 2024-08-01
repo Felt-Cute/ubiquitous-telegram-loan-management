@@ -1,15 +1,11 @@
 package com.dcat23.loanmgmt.application.controller;
 
 import com.dcat23.loanmgmt.application.dto.LoanApplicationCreationDTO;
+import com.dcat23.loanmgmt.application.dto.LoanApplicationResponse;
 import com.dcat23.loanmgmt.application.dto.LoanApplicationUpdateDTO;
-import com.dcat23.loanmgmt.application.model.LoanApplication;
-import com.dcat23.loanmgmt.application.service.LoanApplicationService;
-import com.dcat23.loanmgmt.core.exception.ErrorMessage;
+import com.dcat23.loanmgmt.application.service.client.LoanApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +18,7 @@ import java.util.List;
 
 @Tag(
         name = "REST APIs for Loan Applications",
-        description = "REST APIs to CREATE, UPDATE, FETCH and DELETE Loan Applications")
+        description = "REST APIs to CREATE, UPDATE, FETCH and CANCEL Loan Applications")
 @RestController
 @RequestMapping("/api/applications")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -32,75 +28,68 @@ public class LoanApplicationController {
 
     @PostMapping
     @Operation(
-                summary = "Create Loan Application",
-                description = "REST API to create a loan application")
-    @ApiResponses({
-        @ApiResponse(
-                responseCode = "201",
-                description = "HTTP Status CREATED"),
-        @ApiResponse(
-                responseCode = "404",
-                description = "HTTP Status NOT FOUND",
-                content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
-        @ApiResponse(
-                responseCode = "400",
-                description = "HTTP Status BAD REQUEST",
-                content = @Content(schema = @Schema(implementation = ErrorMessage.class))),
-    })
-    public ResponseEntity<LoanApplication> createLoanApplication(@Valid @RequestBody LoanApplicationCreationDTO loanApplicationDTO) {
-        LoanApplication savedLoanApplication = loanApplicationService.createLoanApplication(loanApplicationDTO);
+            summary = "Create Loan Application",
+            description = "REST API to create a loan application")
+    @ApiResponse(
+            responseCode = "201",
+            description = "HTTP Status CREATED")
+    public ResponseEntity<LoanApplicationResponse> createLoanApplication(@Valid @RequestBody LoanApplicationCreationDTO loanApplicationDTO) {
+        LoanApplicationResponse savedLoanApplication = loanApplicationService
+                .createLoanApplication(loanApplicationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLoanApplication);
     }
 
     @GetMapping("/{id}")
     @Operation(
-                summary = "Get Loan Application By Id",
-                description = "REST API to fetch loan application details")
+            summary = "Get Loan Application By Id",
+            description = "REST API to fetch loan application details")
     @ApiResponse(
-                responseCode = "200",
-                description = "HTTP Status OK")
-    public ResponseEntity<LoanApplication> getLoanApplicationById(@PathVariable Long id) {
-        LoanApplication loanApplication = loanApplicationService.getLoanApplicationById(id);
+            responseCode = "200",
+            description = "HTTP Status OK")
+    public ResponseEntity<LoanApplicationResponse> getLoanApplicationById(@PathVariable Long id) {
+        LoanApplicationResponse loanApplication = loanApplicationService
+                .getLoanApplicationById(id);
         return ResponseEntity.ok(loanApplication);
     }
 
     @GetMapping("/customer/{customerId}")
     @Operation(
-                summary = "Get Loan Applications By Customer Id",
-                description = "REST API to fetch all loans by customer id")
+            summary = "Get Loan Applications By Customer Id",
+            description = "REST API to fetch all loans by customer id")
     @ApiResponse(
-                responseCode = "200",
-                description = "HTTP Status OK")
-    public ResponseEntity<List<LoanApplication>> getLoanApplicationsByCustomerId(@PathVariable Long customerId) {
-        List<LoanApplication> loanApplications = loanApplicationService.getLoanApplicationsByCustomerId(customerId);
+            responseCode = "200",
+            description = "HTTP Status OK")
+    public ResponseEntity<List<LoanApplicationResponse>> getLoanApplicationsByCustomerId(@PathVariable Long customerId) {
+        List<LoanApplicationResponse> loanApplications = loanApplicationService
+                .getLoanApplicationsByCustomerId(customerId);
         return ResponseEntity.ok(loanApplications);
     }
 
     @PutMapping("/{id}")
     @Operation(
-                summary = "Update Loan Application",
-                description = "REST API to update existing loan application details")
+            summary = "Update Loan Application",
+            description = "REST API to update existing loan application details")
 
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "HTTP Status OK"
-            )
-    })
-    public ResponseEntity<LoanApplication> updateLoanApplication(@PathVariable Long id, @Valid @RequestBody LoanApplicationUpdateDTO loanApplicationUpdateDTO) {
-        LoanApplication updatedLoanApplication = loanApplicationService.updateLoanApplication(id, loanApplicationUpdateDTO);
+    @ApiResponse(
+            responseCode = "200",
+            description = "HTTP Status OK"
+    )
+    public ResponseEntity<LoanApplicationResponse> updateLoanApplication(@PathVariable Long id,
+                                                                         @Valid @RequestBody LoanApplicationUpdateDTO loanApplicationUpdateDTO) {
+        LoanApplicationResponse updatedLoanApplication = loanApplicationService
+                .updateLoanApplication(id, loanApplicationUpdateDTO);
         return ResponseEntity.ok(updatedLoanApplication);
     }
 
     @DeleteMapping("/{id}")
     @Operation(
-                summary = "Delete Loan Application",
-                description = "REST API to delete loan application")
+            summary = "Cancel Loan Application",
+            description = "REST API to cancel a loan application")
     @ApiResponse(
-                responseCode = "204",
-                description = "HTTP Status NO CONTENT")
-    public ResponseEntity<Void> deleteLoanApplication(@PathVariable Long id) {
-        loanApplicationService.deleteLoanApplication(id);
+            responseCode = "204",
+            description = "HTTP Status NO CONTENT")
+    public ResponseEntity<Void> cancelLoanApplication(@PathVariable Long id) {
+        loanApplicationService.cancelLoanApplication(id);
         return ResponseEntity.noContent().build();
     }
 }

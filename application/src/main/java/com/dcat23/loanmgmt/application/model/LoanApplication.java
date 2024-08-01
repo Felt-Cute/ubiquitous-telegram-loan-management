@@ -3,6 +3,7 @@ package com.dcat23.loanmgmt.application.model;
 import com.dcat23.loanmgmt.core.model.LoanStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -10,10 +11,9 @@ import java.util.Objects;
 @Data
 @Entity
 @Table(name = "loan_applications",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {
-                "customer_id", "loan_product_id"
-        })}
-)
+        uniqueConstraints = {@UniqueConstraint(
+                columnNames = {"customer_id", "loan_product_id"},
+                name = "uc_customer_id_product_id")})
 public class LoanApplication {
 
     @Id
@@ -40,6 +40,7 @@ public class LoanApplication {
     @Column(nullable = false, name = "customer_id")
     private Long customerId;
 
+    @CreationTimestamp
     @Column(name = "application_date")
     private LocalDate applicationDate;
 

@@ -1,39 +1,36 @@
 package com.dcat23.loanmgmt.application.mapper;
 
 import com.dcat23.loanmgmt.application.dto.LoanApplicationCreationDTO;
+import com.dcat23.loanmgmt.application.dto.LoanApplicationResponse;
 import com.dcat23.loanmgmt.application.dto.LoanApplicationUpdateDTO;
 import com.dcat23.loanmgmt.application.model.LoanApplication;
-import com.dcat23.loanmgmt.core.model.LoanStatus;
+import org.mapstruct.*;
+import org.mapstruct.factory.Mappers;
 
-import java.time.LocalDate;
+import java.util.List;
 
-public class LoanApplicationMapper {
+@Mapper
+public interface LoanApplicationMapper {
 
-    public static LoanApplication mapToLoanApplication(
-            LoanApplicationCreationDTO loanApplicationDTO,
-            LoanApplication loanApplication
-    ) {
-        loanApplication.setAmount(loanApplicationDTO.amount());
-        loanApplication.setTerm(loanApplicationDTO.term());
-        loanApplication.setStatus(LoanStatus.PENDING);
-        loanApplication.setCustomerId(loanApplicationDTO.customerId());
-        loanApplication.setApplicationDate(LocalDate.now());
-        return loanApplication;
-    }
+    LoanApplicationMapper INSTANCE = Mappers.getMapper(LoanApplicationMapper.class);
 
-    public static void mapToLoanApplication(LoanApplicationUpdateDTO updateDTO, LoanApplication loanApplication) {
-        if (updateDTO == null || loanApplication == null) return;
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "loanProduct", ignore = true)
+    @Mapping(target = "applicationDate", ignore = true)
+    LoanApplication toEntity(LoanApplicationCreationDTO loanApplicationCreationDTO);
 
-        if (updateDTO.amount() != null) {
-            loanApplication.setAmount(updateDTO.amount());
-        }
+    @Mapping(target = "loanProductName", source = "loanProduct.name")
+    LoanApplicationResponse toResponse(LoanApplication loanApplication);
 
-        if (updateDTO.term() != null) {
-            loanApplication.setTerm(updateDTO.term());
-        }
+    @Mapping(target = "loanProductName", source = "loanProduct.name")
+    List<LoanApplicationResponse> toResponse(List<LoanApplication> applications);
 
-        if (updateDTO.loanStatus() != null) {
-            loanApplication.setStatus(updateDTO.loanStatus());
-        }
-    }
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "loanProduct", ignore = true)
+    @Mapping(target = "customerId", ignore = true)
+    @Mapping(target = "applicationDate", ignore = true)
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void update(LoanApplicationUpdateDTO loanApplicationUpdateDTO, @MappingTarget LoanApplication loanApplication);
 }
